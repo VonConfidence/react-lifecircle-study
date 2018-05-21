@@ -46,7 +46,7 @@ class App extends Component {
   render() {
     console.log('App render')
     return (
-      <div className="App" onClick={ () => { console.log('test') } }>
+      <div className="App" onClick={ () => { console.log('App clicked test') } }>
         <button onClick={this.handleClick.bind(this)}>点击修改名字 {this.state.age}</button>
         <hr/>
         <ChildComponent name={this.state.name} age={this.state.age} handleAgeClick={this.handleAgeClick.bind(this)}/>

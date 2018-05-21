@@ -40,6 +40,7 @@ export default class ChildComponent extends Component {
         
 
         <h2 onClick={this.props.handleAgeClick}>Age: {age}</h2>
+        <input name="name" value="23"/>
       </div>
     )
   }
