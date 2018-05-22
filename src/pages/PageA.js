@@ -2,25 +2,17 @@ import React from 'react'
 
 export default class PageA extends React.Component {
   handleClick() {
-    // import('./page_test.js').then(module=> {
-    //   module.default();
-    //   console.log(' import success')
-    // }).catch (err=> {
-    //   console.log(err)
-    // })
-    // const path = encodeURIComponent('new/page')
-    let pageId = 'page_123';
-    require.ensure([],function(require){
-      console.log('page____foo')
-      const foo =require("./page_test.js");
-      foo.default()
-    }, 'pageId_123');
+    // 异步导入组件
+    import('./page_test.js').then(module=> {
+      module.default();
+    }).catch (err=> {
+      console.log(err)
+    })
   }
   handleClick2() {
     require.ensure([],function(require){
-      // console.log('page____bar')
-      const bar =require("./page_test_1.js");
-      bar.default()
+      const module =require("./page_test_1.js");
+      module.default()
     }, 'pageId_123');
   }
   render() {

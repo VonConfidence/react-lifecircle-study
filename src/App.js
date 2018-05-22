@@ -7,38 +7,38 @@ import PageA from './pages/PageA'
 class App extends Component {
   constructor(props) {
     super(props);
-    console.log('app constructor');
+    console.log('App constructor - Parent');
     this.state = {
-      name: 'fengzixin',
+      name: 'ParentName Default',
       age: 22
     }
   }
   componentWillMount() {
-    console.log('APP componentsWillMount')
+    console.log('APP componentsWillMount- Parent')
   }
   componentDidMount() {
-    console.log('APP componentDidMount')
+    console.log('APP componentDidMount - Parent')
   }
   componentWillUpdate() {
-    console.log('APP componentWillUpdate')
+    console.log('APP componentWillUpdate - Parent')
   }
   componentDidUpdate() {
-    console.log('APP componentDidUpdate')
+    console.log('APP componentDidUpdate - Parent')
   }
   componentWillReceiveProps(nextProps) {
-    console.log('APP componentWillReceiveProps')
+    console.log('APP componentWillReceiveProps - Parent')
   }
   shouldComponentUpdate(nextProps,nextState) {
     if (nextState.age === this.state.age) {
-      console.log('APP shouldComponentUpdate false')
+      console.log('APP shouldComponentUpdate return false - Parent')
       return false;
     }
-    console.log('APP shouldComponentUpdate')
+    console.log('APP shouldComponentUpdate - Parent')
     return true;
   }
 
   handleClick() {
-    this.setState({name: '修改之后'});
+    this.setState({name: 'App修改name之后'});
 
     this.setState({age: 33})
   }
@@ -46,10 +46,11 @@ class App extends Component {
     this.setState({age: 22});
   }
   render() {
-    console.log('App render')
+    console.log('App render - Parent')
     return (
-      <div className="App" onClick={ () => { console.log('App clicked test') } }>
-        <button onClick={this.handleClick.bind(this)}>点击修改名字 {this.state.age}</button>
+      <div className="App" style={{backgroundColor: 'yellow', marginTop: '30px'}}>
+        <h2>Age: {this.state.age}</h2>
+        <button onClick={this.handleClick.bind(this)}>点击修改名字 </button>
         <hr/>
         <ChildComponent name={this.state.name} age={this.state.age} handleAgeClick={this.handleAgeClick.bind(this)}/>
         <div style={{marginTop: '100px', backgroundColor: 'dodgerblue'}}>
