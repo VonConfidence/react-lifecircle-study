@@ -1,25 +1,25 @@
 ## 声明周期的探讨
  
 1. 项目启动的时候
-    - App constructor - Parent
+    - App constructor(props) - Parent
     - APP componentsWillMount - Parent
     - App render - Parent
-    - Child constructor
+    - Child constructor(props)
     - Child componentsWillMount
     - Child render
     - Child componentDidMount
     - APP componentDidMount
   
 2. 点击button的时候 (当只有name属性的时候)
-    - APP shouldComponentUpdate
-    - APP componentWillUpdate
+    - APP shouldComponentUpdate(nextProps, nextState)
+    - APP componentWillUpdate(nextProps, nextState)
     - App render
-    - Child componentWillReceiveProps
-    - Child shouldComponentUpdate
+    - Child componentWillReceiveProps(nextProps)
+    - Child shouldComponentUpdate(nextProps, nextState)
     - Child componentWillUpdate
     - Child render
-    - Child componentDidUpdate
-    - APP componentDidUpdate
+    - Child componentDidUpdate(prevProps, prevState)
+    - APP componentDidUpdate(prevProps, prevState)
 
 3. App.js中对age做判断, 如果相同即返回false
     - APP shouldComponentUpdate false
@@ -30,7 +30,7 @@
     - App render - Parent
     - children constructor - Parent
     - (警告 - Unsafe legacy lifecycles will not be called for components using new component APIs.)
-    - getDerivedStateFromProps {name: "ParentName Default", age: 22, - handleAgeClick: ƒ} {}
+    - getDerivedStateFromProps(nextProps, prevState) {name: "ParentName Default", age: 22, - handleAgeClick: ƒ} {}
     - Child render
     - Child componentDidMount
     - APP componentDidMount
