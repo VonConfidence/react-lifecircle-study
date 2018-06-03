@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
 import ChildComponent from './components/ChildComponent'
+import ContextConponent from './components/ContextConponent'
 
 import PageA from './pages/PageA'
 
 class App extends Component {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    console.log('APP getDerivedStateFromProps', nextProps, prevState, this)
+    return null;
+  }
   constructor(props) {
     super(props);
     console.log('App constructor - Parent');
@@ -14,9 +19,14 @@ class App extends Component {
     }
   }
   componentWillMount() {
+    // let self = this;
+    // setTimeout(() => {
+    //   self.setState({age:20})
+    // }, 5000);
     console.log('APP componentsWillMount- Parent')
   }
   componentDidMount() {
+    // this.setState({name: 'fff'})
     console.log('APP componentDidMount - Parent')
   }
   componentWillUpdate() {
@@ -29,10 +39,10 @@ class App extends Component {
     console.log('APP componentWillReceiveProps - Parent')
   }
   shouldComponentUpdate(nextProps,nextState) {
-    if (nextState.age === this.state.age) {
-      console.log('APP shouldComponentUpdate return false - Parent')
-      return false;
-    }
+    // if (nextState.age === this.state.age) {
+    //   console.log('APP shouldComponentUpdate return false - Parent')
+    //   return false;
+    // }
     console.log('APP shouldComponentUpdate - Parent')
     return true;
   }
@@ -56,6 +66,8 @@ class App extends Component {
         <div style={{marginTop: '100px', backgroundColor: 'dodgerblue'}}>
           <PageA />
         </div>
+        <hr/>
+        <ContextConponent />
       </div>
     );
   }
