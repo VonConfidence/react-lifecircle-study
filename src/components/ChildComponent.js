@@ -1,52 +1,52 @@
-import React, {Component} from 'react'
+import React, {Component,} from 'react';
 
 export default class ChildComponent extends Component {
   static getDerivedStateFromProps(nextProps, prevState) {
-    console.log('getDerivedStateFromProps - Child', nextProps, prevState)
+    console.log('getDerivedStateFromProps - Child', nextProps, prevState);
     return null;
   }
   constructor(props) {
     super(props);
-    console.log('Child constructor')
-    this.state = {}
+    console.log('Child constructor');
+    this.state = {};
   }
   componentWillMount() {
-    console.log('Child componentsWillMount')
+    console.log('Child componentsWillMount');
   }
   componentDidMount() {
-    console.log('Child componentDidMount')
-  }
-  componentWillUpdate() {
-    console.log('Child componentWillUpdate')
-  }
-  componentDidUpdate() {
-    console.log('Child componentDidUpdate')
+    console.log('Child componentDidMount');
   }
   componentWillReceiveProps(nextProps) {
-    console.warn('Child componentWillReceiveProps')
+    console.warn('Child componentWillReceiveProps', nextProps);
   }
   shouldComponentUpdate() {
-    console.log('Child shouldComponentUpdate')
+    console.log('Child shouldComponentUpdate');
     return true;
   }
+  componentWillUpdate() {
+    console.log('Child componentWillUpdate');
+  }
+  componentDidUpdate() {
+    console.log('Child componentDidUpdate');
+  }
   render() {
-    console.log('Child render')
-    const {name, age} = this.props;
+    console.log('Child render');
+    const {name, age,} = this.props;
     return (
-      <div style={{backgroundColor: 'red', marginTop: '50px'}}>Children
+      <div style={{backgroundColor: 'red', marginTop: '50px',}}>Children
         <br/>
         Name: {name}
         <br/>
 
         <button onClick={this.props.handleAgeClick}>点击修改Age (not change age): {age}</button>
       </div>
-    )
+    );
   }
 }
 
 /**
  * 声明周期的探讨
- 
+
  1. 项目启动的时候
       App constructor - Parent
       APP componentsWillMount - Parent
@@ -56,7 +56,7 @@ export default class ChildComponent extends Component {
       Child render
       Child componentDidMount
       APP componentDidMount
-  
+
   2. 点击button的时候 (当只有name属性的时候)
       APP shouldComponentUpdate
       APP componentWillUpdate

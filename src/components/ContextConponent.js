@@ -1,9 +1,9 @@
-import React from "react";
-import { render } from "react-dom";
-const NameContext = React.createContext("default_name");
+import React from 'react';
+import { render, } from 'react-dom';
+const NameContext = React.createContext('default_name');
 const AgeContext = React.createContext({
   age: 20,
-  gender: 'boy'
+  gender: 'boy',
 });
 
 class Hello extends React.PureComponent {
@@ -21,7 +21,7 @@ class App extends React.Component {
     super();
 
     this.state = {
-      name: "FFF"
+      name: 'FFF',
     };
 
     this.modify = this.modify.bind(this);
@@ -29,7 +29,7 @@ class App extends React.Component {
 
   modify() {
     this.setState({
-      name: this.state.name + "!"
+      name: this.state.name + '!',
     });
   }
 

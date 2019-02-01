@@ -24,7 +24,7 @@
 3. App.js中对age做判断, 如果相同即返回false
     - APP shouldComponentUpdate false
 
-4. 使用新API
+4. 在Children中使用新API
     - App constructor - Parent
     - APP componentsWillMount - Parent
     - App render - Parent
