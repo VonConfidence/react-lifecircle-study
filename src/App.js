@@ -1,10 +1,12 @@
-import React, { Component, } from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import ChildComponent from './components/ChildComponent';
 import ContextConponent from './components/ContextConponent';
 import CssCmp from './css-modules';
 
 import PageA from './pages/PageA';
+import SnapShotComponent from './components/SnapShotComponent';
+import ErrorBoundary from './components/ErrorBoundary';
 
 class App extends Component {
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -33,7 +35,7 @@ class App extends Component {
   componentWillReceiveProps(nextProps) {
     console.log('APP componentWillReceiveProps - Parent');
   }
-  shouldComponentUpdate(nextProps,nextState) {
+  shouldComponentUpdate(nextProps, nextState) {
     // if (nextState.age === this.state.age) {
     //   console.log('APP shouldComponentUpdate return false - Parent')
     //   return false;
@@ -49,34 +51,42 @@ class App extends Component {
   }
 
   handleClick() {
-    this.setState({name: 'App修改name之后',});
+    this.setState({ name: 'App修改name之后' });
 
-    this.setState({age: 33,});
+    this.setState({ age: 33 });
   }
   handleAgeClick() {
-    this.setState({age: 22,});
+    this.setState({ age: 22 });
   }
   render() {
     console.log('App render - Parent');
     return (
-      <div className="App"
-        style={{backgroundColor: 'yellow', marginTop: '30px',}}
-      >
+      <div className="App" style={{ backgroundColor: 'yellow', marginTop: '30px' }}>
         <h2>Age: {this.state.age}</h2>
         <button onClick={this.handleClick.bind(this)}>点击修改名字 </button>
-        <hr/>
-        <ChildComponent age={this.state.age}
+        <hr />
+        <ChildComponent
+          age={this.state.age}
           handleAgeClick={this.handleAgeClick.bind(this)}
           name={this.state.name}
         />
-        <div style={{marginTop: '100px', backgroundColor: 'dodgerblue',}}>
+        <div style={{ marginTop: '100px', backgroundColor: 'dodgerblue' }}>
           <PageA />
         </div>
-        <hr/>
+        <hr />
         <ContextConponent />
 
-        <hr/>
+        <hr />
         <CssCmp />
+
+        <hr />
+        <SnapShotComponent />
+
+        <hr />
+        <ErrorBoundary>
+          <div>Error Page Show</div>
+          <p>{this.state.a}</p>
+        </ErrorBoundary>
       </div>
     );
   }
